@@ -1,22 +1,16 @@
 import express from "express";
+import { controllers } from "../controllers/index.js";
 const router = express.Router()
 
-// middleware that is specific to this router
 const timeLog = (req: any, res: any, next: () => void) => {
     console.log('Time: ', Date.now())
     next()
 }
 router.use(timeLog)
 
-// define the home page route
-router.get('/', (req, res) => {
-    res.send('Home')
-})
 
-// define the about route
-router.get('/about', (req, res) => {
-    res.send('About')
-})
+router.post('/users', controllers.users.create);
+router.get('/users/:id', controllers.users.get);
 
 export default router;
 
