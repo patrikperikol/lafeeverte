@@ -1,4 +1,5 @@
 import express from "express";
+import "dotenv/config";
 import router from "./routes/router.js";
 import { db } from "./persistence/db.js";
 
@@ -10,7 +11,7 @@ app.use(router);
 db.init();
 
 const server = app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`);
+    console.log(`App listening on port ${port}`);
 });
 
 process.on("SIGINT", async () => {
