@@ -1,5 +1,6 @@
 import pg, { Pool, PoolClient } from "pg";
 import dotenv from "dotenv";
+import { users } from "./users.js";
 
 dotenv.config();
 
@@ -34,6 +35,7 @@ async function connect(): Promise<{ client: PoolClient }> {
 export const db = {
     init,
     shutdown,
-    connect
+    connect,
+    users
 }
 
